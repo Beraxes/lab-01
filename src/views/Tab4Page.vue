@@ -1,17 +1,18 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Hardware</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
+    <ion-page>
+      <ion-header>
         <ion-toolbar>
-          <ion-title size="large">Hardware</ion-title>
+          <ion-title>Software</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-item-group>
+      <ion-content :fullscreen="true">
+        <ion-header collapse="condense">
+          <ion-toolbar>
+            <ion-title size="large">Software</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        
+        <ion-item-group>
     <ion-item-divider>
       <ion-label>A</ion-label>
     </ion-item-divider>
@@ -42,14 +43,13 @@
       <ion-label>Belgium</ion-label>
     </ion-item>
   </ion-item-group>
-
-    </ion-content>
-
-
-  </ion-page>
-</template>
-
-<script setup>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
-</script>
+        
+      </ion-content>
+    </ion-page>
+  </template>
+  
+  <script setup>
+  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+  import ExploreContainer from '@/components/ExploreContainer.vue';
+  </script>
+  
