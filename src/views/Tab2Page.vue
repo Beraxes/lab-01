@@ -8,7 +8,8 @@
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
       </ion-header> 
-
+      
+      <div class="cajas">
     <ion-card color="primary">
     <ion-card-header>
       <ion-card-title>Card Title</ion-card-title>
@@ -89,6 +90,7 @@
 
     <ion-card-content> Card Content </ion-card-content>
   </ion-card>
+</div>  
     </ion-content>
   </ion-page>
 </template>
@@ -104,9 +106,9 @@
 
 <style scoped>
   /* iOS places the subtitle above the title */
-  ion-card-header.ios {
-    display: flex;
-    flex-flow: row wrap;
+  .cajas{
+  display: flex;
+  flex-wrap: wrap;
   }
 </style>
 <script setup>
