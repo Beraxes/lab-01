@@ -7,43 +7,38 @@
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
-      </ion-header>     
+      </ion-header>
       <ion-list>
-    <ion-list-header>
-      <ion-title size="large">Video Games</ion-title>
-    </ion-list-header>
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mega Man X</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pac-Man</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Super Mario World</ion-label>
-    </ion-item>
-  </ion-list>
+        <ion-list-header>
+          <ion-title size="large">Licencias</ion-title>
+        </ion-list-header>
+        
+        <!-- Utiliza v-for para generar elementos ion-item dinámicamente -->
+        <ion-item v-for="item in apiResponse" :key="item.name">
+          <ion-label>{{ item.name }}</ion-label>
+        </ion-item>
+      </ion-list>
     </ion-content>
-
   </ion-page>
-  
 </template>
 
-
-<script>
-  import { IonItem, IonLabel, IonList, IonListHeader } from '@ionic/vue';
-  import { defineComponent } from 'vue';
-
-  export default defineComponent({
-    components: { IonItem, IonLabel, IonList, IonListHeader },
-  });
-</script>
 <script setup>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/vue';
+import { ref, onMounted } from 'vue';
+//nota importante, JAMAS BORRES ESTO⬇️⬇️⬇️
+import { IonItem, IonLabel, IonList, IonListHeader, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+//nota importante, JAMAS BORRES ESTO⬆️⬆️⬆️
+const apiResponse = ref([]);
 
+const fetchDataFromAPI = async () => {
+  try {
+    const response = await fetch('http://127.0.0.1:3658/m1/403744-0-default/licNombresFecha');
+    apiResponse.value = await response.json();
+  } catch (error) {
+    console.error('Error al obtener datos de la API', error);
+  }
+};
+
+onMounted(() => {
+  fetchDataFromAPI();
+});
 </script>
