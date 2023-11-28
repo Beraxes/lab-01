@@ -79,7 +79,6 @@ export default {
       for (let i = 0; i < this.apiResponse.length; i++) {
         const userData = this.apiResponse[i];
         
-        console.log(this.userPassword);
         console.log(userData.password);
         
         //console.log(userData.user == "jshouttrr");
