@@ -21,6 +21,8 @@
         <ion-label>
           {{ item.name }}
         </ion-label>
+        <!-- <ion-button @click="addItem">Editar</ion-button>
+        <ion-button @click="deleteItem(item.id)">Eliminar</ion-button> -->
       </ion-item>
 
     </ion-content>
@@ -54,7 +56,7 @@ onIonViewDidEnter(async () => {
       1,
       false
     );
-    loadData();
+    await loadData();
   }
 });
 onIonViewDidLeave(async () => {
@@ -69,10 +71,16 @@ const addItem = async () => {
     [Date.now(),inputName.value]);
 
     console.log(`res: ${JSON.stringify(respSelecT)}`);
+    
     await db.value?.close();
     items.value = respSelecT?.values;
+    await loadData();
+    
   } catch (error) {
     console.log(error);
+  } finally {
+    inputName.value = "";
+    await db.value?.close();
   }
 }
 
@@ -87,7 +95,29 @@ const loadData = async () => {
     items.value = respSelecT?.values;
   } catch (error) {
     console.log(error);
+  }finally {
+    inputName.value = "";
+    await db.value?.close();
   }
+/* 
+  const deleteItem = async (id: number) => {
+  try {
+    await db.value?.open();
+    const respSelecT = await db.value?.query(`DELETE FROM software WHERE id=?`,
+    [id]);
+
+    console.log(`res: ${JSON.stringify(respSelecT)}`);
+    
+    await db.value?.close();
+    items.value = respSelecT?.values;
+    await loadData();
+  } catch (error) {
+    console.log(error);
+  } finally {
+    inputName.value = "";
+    await db.value?.close();
+  }
+} */
 
 }
 </script>

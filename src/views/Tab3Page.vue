@@ -73,6 +73,7 @@ const addItem = async () => {
     console.log(`res: ${JSON.stringify(respSelecT)}`);
     await db.value?.close();
     items.value = respSelecT?.values;
+    await loadData();
   } catch (error) {
     console.log(error);
   }
